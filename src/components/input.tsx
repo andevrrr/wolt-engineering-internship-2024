@@ -1,28 +1,37 @@
 import React from "react";
 
-type InputParams = {
-  type: string;
-  id: string;
-  value: number;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  dataTestId: string;
+type InputProps = {
+  type: string
+  label: string
+  value: number
+  placeholder: string
+  error: boolean
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  dataTestId: string
 };
 
-const Input: React.FC<InputParams> = ({
+const Input: React.FC<InputProps> = ({
   type,
-  id,
+  label,
   value,
+  placeholder,
+  error,
   onChange,
   dataTestId,
 }) => {
   return (
-    <input
-      type={type}
-      id={id}
-      value={value}
-      onChange={onChange}
-      data-test-id={dataTestId}
-    />
+    <div>
+      <label htmlFor={label}>{label}</label>
+      <input
+        type={type}
+        id={label}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+        data-test-id={dataTestId}
+      />
+      {error && <p>The input fields must be filled!</p>}
+    </div>
   );
 };
 
