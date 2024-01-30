@@ -4,7 +4,7 @@ type InputProps = {
   type: string
   name: string
   label: string
-  value: number
+  value: number | string
   placeholder: string
   error: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
