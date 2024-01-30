@@ -2,6 +2,7 @@ import React from "react";
 
 type InputProps = {
   type: string
+  name: string
   label: string
   value: number
   placeholder: string
@@ -12,6 +13,7 @@ type InputProps = {
 
 const Input: React.FC<InputProps> = ({
   type,
+  name,
   label,
   value,
   placeholder,
@@ -21,10 +23,11 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div>
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor={name}>{label}</label>
       <input
         type={type}
-        id={label}
+        id={name}
+        name={name}
         value={value}
         placeholder={placeholder}
         onChange={onChange}
