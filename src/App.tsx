@@ -1,5 +1,5 @@
 import './App.css';
-import { DeliveryFeeCalculator } from './components/main';
+import DeliveryFeeCalculator  from './components/main';
 
 function App() {
   return (
