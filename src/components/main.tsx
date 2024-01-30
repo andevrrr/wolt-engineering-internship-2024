@@ -5,6 +5,8 @@ const DeliveryFeeCalculator: React.FC = () => {
   const [formState, setFormState] = useState({
     cartValue: 0,
     deliveryDistance: 0,
+    numberOfItems: 0,
+    orderTime: "",
   });
   const [error, setError] = useState<boolean>(false);
 
@@ -13,12 +15,21 @@ const DeliveryFeeCalculator: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
     setFormState((prevState) => ({
       ...prevState,
-      [name]: Number(value) || 0,
+      [name]: type === "number" ? Number(value) : value,
     }));
   };
+
+  React.useEffect(() => {
+    if (!formState.orderTime) {
+      setFormState((prevState) => ({
+        ...prevState,
+        time: new Date().toISOString(),
+      }));
+    }
+  }, [formState.orderTime]);
 
   return (
     <div>
@@ -46,6 +57,30 @@ const DeliveryFeeCalculator: React.FC = () => {
             error={error}
             onChange={handleChange}
             dataTestId="deliveryDistance"
+          />
+        </div>
+        <div>
+          <Input
+            type="number"
+            name="numberOfItems"
+            label="Number of Items"
+            value={formState.numberOfItems}
+            placeholder="Enter number of items"
+            error={error}
+            onChange={handleChange}
+            dataTestId="numberOfItems"
+          />
+        </div>
+        <div>
+          <Input
+            type="datetime-local"
+            name="orderTime"
+            label="Order Time"
+            value={formState.orderTime.slice(0, 16)}
+            placeholder="Enter order time in UTC"
+            error={error}
+            onChange={handleChange}
+            dataTestId="orderTime"
           />
         </div>
       </form>
