@@ -1,5 +1,5 @@
 
-export const DeliveryFeeCalculator = () => {
+const DeliveryFeeCalculator: React.FC = () => {
 
   return (
     <div>
@@ -8,3 +8,5 @@ export const DeliveryFeeCalculator = () => {
     </div>
   );
 };
+
+export default DeliveryFeeCalculator;
