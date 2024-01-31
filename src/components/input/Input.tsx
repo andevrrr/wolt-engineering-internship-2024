@@ -31,7 +31,7 @@ const Input: React.FC<InputProps> = ({
           name={name}
           value={value}
           onChange={onChange}
-          data-test-id={dataTestId}
+          data-testid={dataTestId}
           className="input-field"
           min="0" // setting the minnimum value to 0, so that users couldn't submit negative values.
         />

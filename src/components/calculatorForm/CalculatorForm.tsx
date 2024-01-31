@@ -116,11 +116,11 @@ const CalculatorForm: React.FC = () => {
             dataTestId="orderTime"
           />
         </div>
-        <button type="submit" data-test-id="submitButton">
+        <button type="submit" data-testid="submitButton">
           Calculate Delivery Fee
         </button>
         {deliveryFee !== null && (
-          <div data-test-id="fee" className="feeDisplay">
+          <div data-testid="fee" className="feeDisplay">
             Delivery Fee: {deliveryFee}€
           </div>
         )}

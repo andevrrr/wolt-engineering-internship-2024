@@ -1,4 +1,4 @@
-import { CalculateDeliveryFee } from "../../utils/CalculateDeliveryFee";
+import { CalculateDeliveryFee } from "../utils/CalculateDeliveryFee";
 
 describe("CalculateDeliveryFee", () => {
   it("calculates delivery fee correctly for cart value less than 10", () => {
