@@ -25,13 +25,12 @@ const DeliveryFeeCalculator: React.FC = () => {
     e.preventDefault();
 
     const { cartValue, deliveryDistance, numberOfItems, orderTime } = formState;
-    const orderTimeDate = new Date(orderTime);
 
     const fee = calculateDeliveryFee({
       cartValue,
       deliveryDistance,
       numberOfItems,
-      orderTime: orderTimeDate,
+      orderTime: orderTime,
     });
 
     setDeliveryFee(fee);

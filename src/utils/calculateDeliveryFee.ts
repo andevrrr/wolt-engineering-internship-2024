@@ -2,7 +2,7 @@ type DeliveryFeeParams = {
   cartValue: number;
   deliveryDistance: number;
   numberOfItems: number;
-  orderTime: Date;
+  orderTime: string;
 };
 
 export const calculateDeliveryFee = ({
@@ -37,8 +37,13 @@ export const calculateDeliveryFee = ({
     fee += 1.2;
   }
 
-  const orderHourUTC = orderTime.getUTCHours();
-  if (orderTime.getUTCDay() === 5 && orderHourUTC >= 15 && orderHourUTC < 19) {
+  const orderHourUTC = new Date(orderTime).getHours();
+  const orderTimeDate = new Date(orderTime);
+  if (
+    orderTimeDate.getUTCDay() === 5 &&
+    orderHourUTC >= 15 &&
+    orderHourUTC < 19
+  ) {
     fee *= 1.2;
   }
 
