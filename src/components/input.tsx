@@ -1,14 +1,14 @@
 import React from "react";
 
 type InputProps = {
-  type: string
-  name: string
-  label: string
-  value: number | string
-  placeholder: string
-  error: boolean
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  dataTestId: string
+  type: string;
+  name: string;
+  label: string;
+  value: number | string;
+  placeholder: string;
+  error: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  dataTestId: string;
 };
 
 const Input: React.FC<InputProps> = ({
@@ -33,6 +33,9 @@ const Input: React.FC<InputProps> = ({
         onChange={onChange}
         data-test-id={dataTestId}
       />
+      <p>
+        {name === "cartValue" ? "€" : name === "deliveryDistance" ? "m" : ""}
+      </p>
       {error && <p>The input fields must be filled!</p>}
     </div>
   );
