@@ -43,17 +43,11 @@ const CalculatorForm: React.FC = () => {
     const { cartValue, deliveryDistance, numberOfItems, orderTime } = formState;
 
     try {
-      const orderTimeDate = new Date(orderTime);
-
-      if (isNaN(orderTimeDate.getTime())) {
-        throw new Error("Invalid order time");
-      }
-
-      const fee = CalculateDeliveryFee({
+      const fee: number = CalculateDeliveryFee({
         cartValue,
         deliveryDistance,
         numberOfItems,
-        orderTime: orderTimeDate.toISOString(),
+        orderTime: orderTime,
       });
 
       setDeliveryFee(fee);

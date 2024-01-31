@@ -13,6 +13,12 @@ export const CalculateDeliveryFee = ({
 }: DeliveryFeeParams): number => {
   let fee = 2;
 
+  const orderTimeDat = new Date(orderTime);
+
+  if (isNaN(orderTimeDat.getTime())) {
+    throw new Error("Invalid order time");
+  }
+
   if (cartValue >= 200) {
     fee = 0;
     return fee;
@@ -39,11 +45,7 @@ export const CalculateDeliveryFee = ({
 
   const orderHourUTC = new Date(orderTime).getHours();
   const orderTimeDate = new Date(orderTime);
-  if (
-    orderTimeDate.getDay() === 5 &&
-    orderHourUTC >= 15 &&
-    orderHourUTC < 19
-  ) {
+  if (orderTimeDate.getDay() === 5 && orderHourUTC >= 15 && orderHourUTC < 19) {
     fee *= 1.2;
   }
 
