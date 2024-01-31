@@ -40,7 +40,7 @@ export const CalculateDeliveryFee = ({
   const orderHourUTC = new Date(orderTime).getHours();
   const orderTimeDate = new Date(orderTime);
   if (
-    orderTimeDate.getUTCDay() === 5 &&
+    orderTimeDate.getDay() === 5 &&
     orderHourUTC >= 15 &&
     orderHourUTC < 19
   ) {
