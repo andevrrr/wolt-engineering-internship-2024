@@ -7,10 +7,19 @@ const DeliveryFeeCalculator: React.FC = () => {
     cartValue: 0,
     deliveryDistance: 0,
     numberOfItems: 0,
-    orderTime: "",
+    orderTime: getLocalDateTimeForInput(),
   });
   const [deliveryFee, setDeliveryFee] = useState<number | null>(null);
   const [error, setError] = useState<boolean>(false);
+
+  function getLocalDateTimeForInput(): string {
+    const now = new Date();
+    const timezoneOffset = now.getTimezoneOffset() * 60000;
+    const localISOTime = new Date(now.getTime() - timezoneOffset)
+      .toISOString()
+      .slice(0, 16);
+    return localISOTime;
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,15 +44,6 @@ const DeliveryFeeCalculator: React.FC = () => {
       [name]: type === "number" ? Number(value) : value,
     }));
   };
-
-  React.useEffect(() => {
-    if (!formState.orderTime) {
-      setFormState((prevState) => ({
-        ...prevState,
-        time: new Date().toISOString(),
-      }));
-    }
-  }, [formState.orderTime]);
 
   return (
     <div>
@@ -90,7 +90,7 @@ const DeliveryFeeCalculator: React.FC = () => {
             type="datetime-local"
             name="orderTime"
             label="Order Time"
-            value={formState.orderTime.slice(0, 16)}
+            value={formState.orderTime}
             placeholder="Enter order time in UTC"
             error={error}
             onChange={handleChange}
