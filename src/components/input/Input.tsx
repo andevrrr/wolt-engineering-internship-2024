@@ -32,6 +32,7 @@ const Input: React.FC<InputProps> = ({
           onChange={onChange}
           data-test-id={dataTestId}
           className="input-field"
+          min="0"
         />
         <p className="input-unit">
           {name === "cartValue" ? "€" : name === "deliveryDistance" ? "m" : ""}
