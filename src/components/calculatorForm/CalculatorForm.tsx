@@ -20,6 +20,10 @@ const CalculatorForm: React.FC = () => {
   const [deliveryFee, setDeliveryFee] = useState<number | null>(null);
   const [error, setError] = useState<boolean>(false);
 
+  const validateForm = (): boolean => {
+    return formState.cartValue === 0 || formState.numberOfItems === 0;
+  };
+
   function getLocalDateTimeForInput(): string {
     const now = new Date();
     const timezoneOffset = now.getTimezoneOffset() * 60000;
@@ -31,6 +35,11 @@ const CalculatorForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (validateForm()) {
+      alert("Cart value and number of items cannot be zero.");
+      return;
+    }
 
     const { cartValue, deliveryDistance, numberOfItems, orderTime } = formState;
 
