@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CalculateDeliveryFee } from "../../utils/CalculateDeliveryFee";
-import Input from "../Input";
+import Input from "../input/Input";
+import "./CalculatorForm.css";
 
 interface FormState {
   cartValue: number | 0;
@@ -52,7 +53,7 @@ const CalculatorForm: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="CalculatorForm">
       <h1>Delivery Fee Calculator</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -71,7 +72,7 @@ const CalculatorForm: React.FC = () => {
           <Input
             type="number"
             name="deliveryDistance"
-            label="Delivery Distance"
+            label="Delivery distance"
             value={formState.deliveryDistance}
             placeholder="Please enter the distance"
             error={error}
@@ -83,7 +84,7 @@ const CalculatorForm: React.FC = () => {
           <Input
             type="number"
             name="numberOfItems"
-            label="Number of Items"
+            label="Amount of items"
             value={formState.numberOfItems}
             placeholder="Enter number of items"
             error={error}
@@ -95,7 +96,7 @@ const CalculatorForm: React.FC = () => {
           <Input
             type="datetime-local"
             name="orderTime"
-            label="Order Time"
+            label="Time"
             value={formState.orderTime}
             placeholder="Enter order time in UTC"
             error={error}
@@ -107,7 +108,9 @@ const CalculatorForm: React.FC = () => {
           Calculate Delivery Fee
         </button>
         {deliveryFee !== null && (
-          <div data-test-id="fee">Delivery Fee: {deliveryFee}€</div>
+          <div data-test-id="fee" className="feeDisplay">
+            Delivery Fee: {deliveryFee}€
+          </div>
         )}
       </form>
     </div>
