@@ -6,6 +6,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   font-family: "Arial", sans-serif;
+  position: relative;
 }
 
 h1 {
@@ -73,3 +74,23 @@ button:focus {
   font-weight: bold;
   color: #333;
 }
+
+.wolt-plus-banner {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+    width: 400px;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .wolt-plus-banner {
+      position: absolute;
+      left: 20%;
+      bottom: 0;
+      transform: translate(-50%, 50%);
+      width: 300px;
+      height: auto;
+    }
+  }

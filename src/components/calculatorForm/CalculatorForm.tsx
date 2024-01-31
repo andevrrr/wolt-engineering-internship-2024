@@ -113,6 +113,11 @@ const CalculatorForm: React.FC = () => {
           </div>
         )}
       </form>
+      <img
+        src="https://imageproxy.wolt.com/static-assets/frontpage-assets/wolt-plus/banner_wolt_plus.png"
+        alt="Wolt Plus Banner"
+        className="wolt-plus-banner"
+      />
     </div>
   );
 };
