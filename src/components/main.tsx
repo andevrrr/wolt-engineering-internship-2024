@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { calculateDeliveryFee } from "../utils/calculateDeliveryFee";
 import Input from "./input";
 
 const DeliveryFeeCalculator: React.FC = () => {
@@ -8,10 +9,23 @@ const DeliveryFeeCalculator: React.FC = () => {
     numberOfItems: 0,
     orderTime: "",
   });
+  const [deliveryFee, setDeliveryFee] = useState<number | null>(null);
   const [error, setError] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const { cartValue, deliveryDistance, numberOfItems, orderTime } = formState;
+    const orderTimeDate = new Date(orderTime);
+
+    const fee = calculateDeliveryFee({
+      cartValue,
+      deliveryDistance,
+      numberOfItems,
+      orderTime: orderTimeDate,
+    });
+
+    setDeliveryFee(fee);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,6 +97,12 @@ const DeliveryFeeCalculator: React.FC = () => {
             dataTestId="orderTime"
           />
         </div>
+        <button type="submit" data-test-id="submitButton">
+          Calculate Delivery Fee
+        </button>
+        {deliveryFee !== null && (
+          <div data-test-id="fee">Delivery Fee: {deliveryFee}€</div>
+        )}
       </form>
     </div>
   );
