@@ -32,7 +32,7 @@ const CalculatorForm: React.FC = () => {
     return localISOTime;
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
     if (validateForm()) {
@@ -52,7 +52,7 @@ const CalculatorForm: React.FC = () => {
     setDeliveryFee(fee);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value, type } = e.target;
     setFormState((prevState) => ({
       ...prevState,
