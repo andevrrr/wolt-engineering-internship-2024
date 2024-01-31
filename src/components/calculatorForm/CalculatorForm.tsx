@@ -52,7 +52,7 @@ const CalculatorForm: React.FC = () => {
 
       setDeliveryFee(fee);
     } catch (error: any) {
-      console.error("Error processing order time:", error.message);
+      console.error("Error:", error.message);
       alert("Invalid order time. Please enter a valid date and time.");
     }
   };
