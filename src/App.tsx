@@ -1,10 +1,10 @@
 import './App.css';
-import DeliveryFeeCalculator  from './components/main';
+import CalculatorForm  from './components/calculatorForm/CalculatorForm';
 
 function App() {
   return (
     <div className="App">
-      <DeliveryFeeCalculator />
+      <CalculatorForm />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { calculateDeliveryFee } from "../utils/calculateDeliveryFee";
-import Input from "./input";
+import { CalculateDeliveryFee } from "../../utils/CalculateDeliveryFee";
+import Input from "../Input";
 
 interface FormState {
   cartValue: number | 0;
@@ -9,7 +9,7 @@ interface FormState {
   orderTime: string;
 }
 
-const DeliveryFeeCalculator: React.FC = () => {
+const CalculatorForm: React.FC = () => {
   const [formState, setFormState] = useState<FormState>({
     cartValue: 0,
     deliveryDistance: 0,
@@ -33,7 +33,7 @@ const DeliveryFeeCalculator: React.FC = () => {
 
     const { cartValue, deliveryDistance, numberOfItems, orderTime } = formState;
 
-    const fee = calculateDeliveryFee({
+    const fee = CalculateDeliveryFee({
       cartValue,
       deliveryDistance,
       numberOfItems,
@@ -114,4 +114,4 @@ const DeliveryFeeCalculator: React.FC = () => {
   );
 };
 
-export default DeliveryFeeCalculator;
+export default CalculatorForm;

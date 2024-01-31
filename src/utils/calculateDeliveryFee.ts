@@ -5,7 +5,7 @@ type DeliveryFeeParams = {
   orderTime: string;
 };
 
-export const calculateDeliveryFee = ({
+export const CalculateDeliveryFee = ({
   cartValue,
   deliveryDistance,
   numberOfItems,
