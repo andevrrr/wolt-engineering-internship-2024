@@ -42,14 +42,25 @@ const CalculatorForm: React.FC = () => {
 
     const { cartValue, deliveryDistance, numberOfItems, orderTime } = formState;
 
-    const fee = CalculateDeliveryFee({
-      cartValue,
-      deliveryDistance,
-      numberOfItems,
-      orderTime: orderTime,
-    });
+    try {
+      const orderTimeDate = new Date(orderTime);
 
-    setDeliveryFee(fee);
+      if (isNaN(orderTimeDate.getTime())) {
+        throw new Error("Invalid order time");
+      }
+
+      const fee = CalculateDeliveryFee({
+        cartValue,
+        deliveryDistance,
+        numberOfItems,
+        orderTime: orderTimeDate.toISOString(),
+      });
+
+      setDeliveryFee(fee);
+    } catch (error: any) {
+      console.error("Error processing order time:", error.message);
+      alert("Invalid order time. Please enter a valid date and time.");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
