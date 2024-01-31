@@ -18,7 +18,6 @@ const CalculatorForm: React.FC = () => {
     orderTime: getLocalDateTimeForInput(),
   });
   const [deliveryFee, setDeliveryFee] = useState<number | null>(null);
-  const [error, setError] = useState<boolean>(false);
 
   const validateForm = (): boolean => {
     return formState.cartValue === 0 || formState.numberOfItems === 0;
@@ -71,8 +70,6 @@ const CalculatorForm: React.FC = () => {
             name="cartValue"
             label="Cart Value"
             value={formState.cartValue}
-            placeholder="Please enter your cart value"
-            error={error}
             onChange={handleChange}
             dataTestId="cartValue"
           />
@@ -83,8 +80,6 @@ const CalculatorForm: React.FC = () => {
             name="deliveryDistance"
             label="Delivery distance"
             value={formState.deliveryDistance}
-            placeholder="Please enter the distance"
-            error={error}
             onChange={handleChange}
             dataTestId="deliveryDistance"
           />
@@ -95,8 +90,6 @@ const CalculatorForm: React.FC = () => {
             name="numberOfItems"
             label="Amount of items"
             value={formState.numberOfItems}
-            placeholder="Enter number of items"
-            error={error}
             onChange={handleChange}
             dataTestId="numberOfItems"
           />
@@ -107,8 +100,6 @@ const CalculatorForm: React.FC = () => {
             name="orderTime"
             label="Time"
             value={formState.orderTime}
-            placeholder="Enter order time in UTC"
-            error={error}
             onChange={handleChange}
             dataTestId="orderTime"
           />

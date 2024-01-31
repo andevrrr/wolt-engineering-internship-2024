@@ -6,8 +6,6 @@ interface InputProps {
   name: string;
   label: string;
   value: number | string;
-  placeholder: string;
-  error: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   dataTestId: string;
 }
@@ -17,8 +15,6 @@ const Input: React.FC<InputProps> = ({
   name,
   label,
   value,
-  placeholder,
-  error,
   onChange,
   dataTestId,
 }) => {
@@ -33,7 +29,6 @@ const Input: React.FC<InputProps> = ({
           id={name}
           name={name}
           value={value}
-          placeholder={placeholder}
           onChange={onChange}
           data-test-id={dataTestId}
           className="input-field"
@@ -42,9 +37,6 @@ const Input: React.FC<InputProps> = ({
           {name === "cartValue" ? "€" : name === "deliveryDistance" ? "m" : ""}
         </p>
       </div>
-      {error && (
-        <p className="errorMessage">The input fields must be filled!</p>
-      )}
     </div>
   );
 };
