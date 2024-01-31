@@ -1,6 +1,6 @@
 import React from "react";
 
-type InputProps = {
+interface InputProps {
   type: string;
   name: string;
   label: string;
@@ -9,7 +9,7 @@ type InputProps = {
   error: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   dataTestId: string;
-};
+}
 
 const Input: React.FC<InputProps> = ({
   type,
