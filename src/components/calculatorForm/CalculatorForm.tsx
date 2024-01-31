@@ -7,7 +7,7 @@ interface FormState {
   cartValue: number | 0;
   deliveryDistance: number | 0;
   numberOfItems: number | 0;
-  orderTime: string;
+  orderTime: string; // setting the initial order time (browser time)
 }
 
 const CalculatorForm: React.FC = () => {
@@ -17,12 +17,14 @@ const CalculatorForm: React.FC = () => {
     numberOfItems: 0,
     orderTime: getLocalDateTimeForInput(),
   });
+  // Initialising the delivery fee state as null
   const [deliveryFee, setDeliveryFee] = useState<number | null>(null);
 
   const validateForm = (): boolean => {
     return formState.cartValue === 0 || formState.numberOfItems === 0;
   };
 
+  // function to get the browser time for input
   function getLocalDateTimeForInput(): string {
     const now = new Date();
     const timezoneOffset = now.getTimezoneOffset() * 60000;
@@ -32,9 +34,12 @@ const CalculatorForm: React.FC = () => {
     return localISOTime;
   }
 
+  // Handling the submission form
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
+    // firstly, checking if input numbers for cardValue and deliveryDistance are not 0,
+    // because if they are 0, then what is the point of delivery?
     if (validateForm()) {
       alert("Cart value and number of items cannot be zero.");
       return;
@@ -43,6 +48,7 @@ const CalculatorForm: React.FC = () => {
     const { cartValue, deliveryDistance, numberOfItems, orderTime } = formState;
 
     try {
+      // Calculating the delivery fee using the CalculateDeliveryFee function
       const fee: number = CalculateDeliveryFee({
         cartValue,
         deliveryDistance,
@@ -57,6 +63,7 @@ const CalculatorForm: React.FC = () => {
     }
   };
 
+  // Handling the input fields inputs
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value, type } = e.target;
     setFormState((prevState) => ({

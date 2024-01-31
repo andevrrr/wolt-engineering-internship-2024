@@ -15,10 +15,12 @@ export const CalculateDeliveryFee = ({
 
   const orderTimeDat = new Date(orderTime);
 
+  // Throwing an error if the time is invalid
   if (isNaN(orderTimeDat.getTime())) {
     throw new Error("Invalid order time");
   }
 
+  // if the cartValue is more or equal to 200, then return 0 fee
   if (cartValue >= 200) {
     fee = 0;
     return fee;
@@ -49,6 +51,7 @@ export const CalculateDeliveryFee = ({
     fee *= 1.2;
   }
 
+  // if the fee is more than 15, it sets it to 15, which is the max fee
   fee = Math.min(fee, 15);
 
   return fee;

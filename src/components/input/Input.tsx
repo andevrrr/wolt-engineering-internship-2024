@@ -1,6 +1,7 @@
 import React from "react";
 import "./Input.css";
 
+// Defining the props interface for the Input component
 interface InputProps {
   type: string;
   name: string;
@@ -32,7 +33,7 @@ const Input: React.FC<InputProps> = ({
           onChange={onChange}
           data-test-id={dataTestId}
           className="input-field"
-          min="0"
+          min="0" // setting the minnimum value to 0, so that users couldn't submit negative values.
         />
         <p className="input-unit">
           {name === "cartValue" ? "€" : name === "deliveryDistance" ? "m" : ""}
