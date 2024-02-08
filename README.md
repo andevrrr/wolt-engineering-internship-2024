@@ -1,5 +1,7 @@
 # Delivery Fee Calculator
 
+The app is on github pages: https://andevrrr.github.io/wolt-engineering-internship-2024/
+
 This project is a React-based web application designed to calculate delivery fees based on various factors such as cart value, delivery distance, number of items, and order time. It showcases modern web development practices using React, TypeScript, and comprehensive testing strategies.
 
 ## Features
