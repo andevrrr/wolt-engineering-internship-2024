@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/wolt-engineering-internship-2024/static/css/main.441a1335.css",
+    "main.js": "/wolt-engineering-internship-2024/static/js/main.b381be7a.js",
+    "static/js/787.e115c0c8.chunk.js": "/wolt-engineering-internship-2024/static/js/787.e115c0c8.chunk.js",
+    "index.html": "/wolt-engineering-internship-2024/index.html",
+    "main.441a1335.css.map": "/wolt-engineering-internship-2024/static/css/main.441a1335.css.map",
+    "main.b381be7a.js.map": "/wolt-engineering-internship-2024/static/js/main.b381be7a.js.map",
+    "787.e115c0c8.chunk.js.map": "/wolt-engineering-internship-2024/static/js/787.e115c0c8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.441a1335.css",
+    "static/js/main.b381be7a.js"
+  ]
+}
